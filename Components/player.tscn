@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://djwlv1lon66y1"]
+[gd_scene load_steps=2 format=3 uid="uid://djwlv1lon66y1"]
+
+[ext_resource type="Script" path="res://Components/player.gd" id="1_7o8le"]
 
 [node name="Player" type="Area2D"]
-metadata/_edit_group_ = true
+script = ExtResource("1_7o8le")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
