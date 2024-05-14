@@ -29,3 +29,5 @@ shape = SubResource("CapsuleShape2D_k0pft")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hlk2g")
 animation = &"walk"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
