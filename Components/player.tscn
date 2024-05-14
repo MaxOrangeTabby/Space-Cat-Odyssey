@@ -1,16 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://djwlv1lon66y1"]
 
 [ext_resource type="Script" path="res://Components/player.gd" id="1_7o8le"]
-[ext_resource type="Texture2D" uid="uid://brol4e5ixk0a5" path="res://art/Triangle/Triangle-0001.png" id="2_3wktu"]
+[ext_resource type="Texture2D" uid="uid://galtyq4libln" path="res://art/Character_Model.png" id="2_pqkn8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vgbqm"]
-radius = 23.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k0pft"]
+radius = 260.0
+height = 974.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8uioy"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_hlk2g"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3wktu")
+"texture": ExtResource("2_pqkn8")
 }],
 "loop": true,
 "name": &"walk",
@@ -18,13 +19,13 @@ animations = [{
 }]
 
 [node name="Player" type="Area2D"]
-position = Vector2(0, 1)
+position = Vector2(910, 549)
 script = ExtResource("1_7o8le")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_vgbqm")
+shape = SubResource("CapsuleShape2D_k0pft")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_8uioy")
+sprite_frames = SubResource("SpriteFrames_hlk2g")
 animation = &"walk"
