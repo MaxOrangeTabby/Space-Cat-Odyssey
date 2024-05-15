@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cupmf80lhdkod"]
+
+[ext_resource type="Script" path="res://Components/enemy/enemyPlanet1Type1.gd" id="1_02s3b"]
+[ext_resource type="Texture2D" uid="uid://b8wdx81xvsnjw" path="res://art/Enemy1_Model.PNG" id="2_j4t3j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nrmq1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j4t3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_j4t3j")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8gva"]
+size = Vector2(700, 572)
+
+[node name="enemyPlanet1Type1" type="RigidBody2D"]
+position = Vector2(72, -7)
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_02s3b")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nrmq1")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21, -10)
+shape = SubResource("RectangleShape2D_u8gva")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
