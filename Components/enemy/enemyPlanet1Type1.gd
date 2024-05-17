@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var enemySpeed = -5
+var enemySpeed = -2.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
