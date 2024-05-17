@@ -8,9 +8,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_j4t3j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_j4t3j")
 }],
 "loop": true,
 "name": &"walk",
@@ -18,23 +15,26 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8gva"]
-size = Vector2(700, 572)
+size = Vector2(98, 82)
 
 [node name="enemyPlanet1Type1" type="RigidBody2D"]
-position = Vector2(72, -7)
+position = Vector2(72, -10)
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_02s3b")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_nrmq1")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21, -10)
+position = Vector2(3, -5)
 shape = SubResource("RectangleShape2D_u8gva")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(2, -4.99998)
+scale = Vector2(5, 4.3)
 
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
