@@ -1,22 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnlhx0jn5mcnb"]
+[gd_scene load_steps=6 format=3 uid="uid://bnlhx0jn5mcnb"]
 
 [ext_resource type="Script" path="res://MainScenes/main.gd" id="1_7ywre"]
-[ext_resource type="PackedScene" uid="uid://cupmf80lhdkod" path="res://Components/enemy/enemy_planet_1_type_1.tscn" id="2_oje3n"]
 [ext_resource type="Texture2D" uid="uid://dxasj61qndl3u" path="res://art/Test_BG.PNG" id="3_03o7f"]
 [ext_resource type="PackedScene" uid="uid://djwlv1lon66y1" path="res://Components/player/player.tscn" id="4_dhun4"]
 
-[sub_resource type="Curve2D" id="Curve2D_jfvml"]
+[sub_resource type="Curve2D" id="Curve2D_hpsjs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1914, 1077, 0, 0, 0, 0, 0, 1072)
+"points": PackedVector2Array(0, 0, 0, 0, 1533.85, 3334.05, 0, 0, 0, 0, 1523.9, 2811.03)
 }
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmno8"]
-size = Vector2(1901, 114)
+size = Vector2(1926.5, 114)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_7ywre")
-mob_scene = ExtResource("2_oje3n")
 
 [node name="TestBg" type="Sprite2D" parent="."]
 position = Vector2(960, 544)
@@ -24,7 +22,17 @@ scale = Vector2(0.499219, 0.501157)
 texture = ExtResource("3_03o7f")
 
 [node name="Player" parent="." instance=ExtResource("4_dhun4")]
-position = Vector2(1096, 704)
+position = Vector2(120, 848)
+
+[node name="EnemyPath" type="Path2D" parent="."]
+position = Vector2(670.903, -2056.78)
+scale = Vector2(0.803921, 0.902439)
+curve = SubResource("Curve2D_hpsjs")
+metadata/_edit_group_ = true
+
+[node name="EnemySpawnLoc" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(1533.85, 3334.05)
+rotation = -1.58982
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -36,18 +44,10 @@ one_shot = true
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 450)
 
-[node name="EnemyPath" type="Path2D" parent="."]
-position = Vector2(192, -2360)
-curve = SubResource("Curve2D_jfvml")
-
-[node name="EnemySpawnLoc" type="PathFollow2D" parent="EnemyPath"]
-position = Vector2(1914, 1077)
-rotation = -3.13898
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(945.5, 1032)
+position = Vector2(964.75, 1032)
 shape = SubResource("RectangleShape2D_hmno8")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
