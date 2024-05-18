@@ -1,6 +1,5 @@
 extends Node
 
-
 var score
 var enemy_scene = preload("res://Components/enemy/enemy_planet_1_type_1.tscn")
 
