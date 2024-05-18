@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 var enemySpeed = -2.5
 var dead = false;
@@ -11,14 +11,10 @@ func _ready():
 func _process(delta):
 	global_position.x += enemySpeed 
 
-
-	
 func _on_visible_on_screen_enabler_2d_screen_exited():
 	queue_free()
 
-
-func _on_area_entered(area):
-	print(area)
+func _on_hitbox_area_area_entered(area):
 	if area.is_in_group("Sword"):
 		dead = true;
 		$AnimatedSprite2D.play("death");
