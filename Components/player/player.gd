@@ -39,8 +39,16 @@ func _process(delta):
 		$AnimatedSprite2D.flip_v = false
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 
-	if Input.is_action_just_pressed("primary_attack") and not attacking:
+	if Input.is_action_just_pressed("primary_attack"):
 		$AnimatedSprite2D.play("primary_attack")
+		attacking = true;
+		$AttackArea/CollisionShape2D.disabled = false;
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if $AnimatedSprite2D.animation == "primary_attack":
+		$AttackArea/CollisionShape2D.disabled = true;
+		attacking = false;
 
 func _on_body_entered(body):
 	hit.emit()
