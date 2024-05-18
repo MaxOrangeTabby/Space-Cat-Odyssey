@@ -11,7 +11,7 @@ _data = {
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmno8"]
-size = Vector2(1926.5, 114)
+size = Vector2(2048, 114)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_7ywre")
@@ -47,7 +47,7 @@ position = Vector2(240, 450)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(964.75, 1032)
+position = Vector2(904, 1032)
 shape = SubResource("RectangleShape2D_hmno8")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
