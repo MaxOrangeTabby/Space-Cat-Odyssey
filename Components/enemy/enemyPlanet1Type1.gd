@@ -17,6 +17,7 @@ func _ready():
 func _process(delta):
 	if(!knockedBack):
 		linear_velocity.x += enemySpeed 
+		$AnimatedSprite2D.play("walk")
 	if(knockedBack):
 		knockedBack = false
 
@@ -33,7 +34,7 @@ func recieve_knockback(damage_source_pos: Vector2, received_damage: int):
 		var knockback = knockback_dir * knockback_str
 
 		global_position.x +=  knockback.x
-		global_position.y -= 35
+		global_position.y -= 100
 		
 		knockedBack = true
 
