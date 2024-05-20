@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnlhx0jn5mcnb"]
+[gd_scene load_steps=7 format=3 uid="uid://bnlhx0jn5mcnb"]
 
 [ext_resource type="Script" path="res://MainScenes/main.gd" id="1_7ywre"]
 [ext_resource type="Texture2D" uid="uid://dxasj61qndl3u" path="res://art/Test_BG.PNG" id="3_03o7f"]
+[ext_resource type="PackedScene" uid="uid://cupmf80lhdkod" path="res://Components/enemy/enemy_planet_1_type_1.tscn" id="4_7v5rk"]
 [ext_resource type="PackedScene" uid="uid://djwlv1lon66y1" path="res://Components/player/player.tscn" id="4_dhun4"]
 
 [sub_resource type="Curve2D" id="Curve2D_hpsjs"]
@@ -35,7 +36,7 @@ position = Vector2(1533.85, 3334.05)
 rotation = -1.58982
 
 [node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 7.5
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -49,6 +50,9 @@ position = Vector2(240, 450)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(904, 1032)
 shape = SubResource("RectangleShape2D_hmno8")
+
+[node name="enemyPlanet1Type1" parent="." instance=ExtResource("4_7v5rk")]
+position = Vector2(1080, 900)
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
