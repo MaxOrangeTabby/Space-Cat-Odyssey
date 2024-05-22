@@ -23,11 +23,13 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		
 	var direction : Vector2 = starting_move_direction
-	if direction: 
+	if direction && not dead: 
 		velocity.x = direction.x * enemySpeed
 		enemy_animation.play("walk")
 	else:
 		velocity.x =  move_toward(velocity.x, 0, enemySpeed)
+		
+		
 	move_and_slide()
 
 
@@ -40,17 +42,17 @@ func recieve_knockback(damage_source_pos: Vector2, received_damage: int):
 		var knockback = knockback_dir * knockback_str
 
 		global_position.x +=  knockback.x
-		 
 		knockedBack = true
+
 
 
 func _on_hitbox_area_area_entered(area):
 	recieve_knockback(area.global_position, 100)
 	if area.is_in_group("Sword"):
 		dead = true;
-		$AnimatedSprite2D.play("death");
+		enemy_animation.play("death");
 
 
 func _on_animated_sprite_2d_animation_finished():
-	if $AnimatedSprite2D.animation == "death":
+	if enemy_animation.animation == "death":
 		queue_free();
