@@ -109,30 +109,30 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8gva"]
-size = Vector2(103, 87)
+size = Vector2(96, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w86dg"]
-size = Vector2(103, 88)
+size = Vector2(96, 80)
 
 [node name="enemyPlanet1Type1" type="RigidBody2D"]
-position = Vector2(33, -13)
 script = ExtResource("1_02s3b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
+position = Vector2(7.62939e-06, 1.90735e-06)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_oia4g")
 animation = &"walk"
 frame = 7
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -2.5)
+position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_u8gva")
 
 [node name="HitboxArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
-position = Vector2(0.5, -3)
+position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_w86dg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
