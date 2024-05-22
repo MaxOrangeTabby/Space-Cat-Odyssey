@@ -1,62 +1,53 @@
 extends CharacterBody2D
 signal hit
 
-const gravity = 35	
+@export var speed : float = 300.0
+@export var jump_velocity : float = -450.0
 
-@export var speed = 500
+@onready var sprite_animation : AnimatedSprite2D = $AnimatedSprite2D
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var attacking = false
-var screen_size 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	screen_size = get_viewport_rect().size
+var direction : Vector2 = Vector2.ZERO
+var animation_lock : bool = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	velocity.x = 0
-	if Input.is_action_pressed("move_right") and !attacking:
-		velocity.x += speed
-		$AnimatedSprite2D.play()
-	if Input.is_action_pressed("move_left") and !attacking:
-		velocity.x -= speed
-		$AnimatedSprite2D.play()
-	if Input.is_action_pressed("jump") and !attacking:
-		if is_on_floor():
-			velocity.y = -1250	
+
+func _physics_process(delta):
+	# Gravity
 	if not is_on_floor():
-		velocity.y = velocity.y + gravity
+		velocity.y += gravity * delta
+	
+	# Jump Logic
+	if Input.is_action_pressed("jump") and is_on_floor():
+		velocity.y = jump_velocity
+
+	# Movement Logic (left/right)
+	direction = Input.get_vector("move_left","move_right","jump","move_down")
+	if direction.x != 0 && sprite_animation.animation != "jump":
+		velocity.x = direction.x * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
-	
-	# Prevent offscreen movement
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
-
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-
-	if Input.is_action_just_pressed("primary_attack"):
-		$AnimatedSprite2D.play("primary_attack")
-		attacking = true;
-		
-		if($AnimatedSprite2D.flip_h):
-			$AttackArea/AttackAreaLeft.disabled = false;
-		if(!$AnimatedSprite2D.flip_h):
-			$AttackArea/AttackAreaRight.disabled = false;
+	update_animation()
 
 
 func _on_animated_sprite_2d_animation_finished():
-	if $AnimatedSprite2D.animation == "primary_attack":
-		if($AnimatedSprite2D.flip_h):
-			$AttackArea/AttackAreaLeft.disabled = true;
-		if(!$AnimatedSprite2D.flip_h):
-			$AttackArea/AttackAreaRight.disabled = true;
-		attacking = false;
+	if $AnimatedSprite2D.animation == "jump":
+		animation_lock = false
 
+func jump():
+	velocity.y = jump_velocity
+	sprite_animation.play("jump")
+	animation_lock = true
+
+func update_animation():
+	if not animation_lock:
+		if direction.x != 0:
+			sprite_animation.play("walk")
+			sprite_animation.flip_h = velocity.x < 0
+		else:
+			sprite_animation.play("idle")
 func _on_body_entered(body):
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)

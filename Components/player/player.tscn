@@ -23,6 +23,22 @@ height = 240.0
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_l5elo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l5elo")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_w5kua")
 }, {
 "duration": 1.0,
@@ -90,14 +106,12 @@ shape = SubResource("CapsuleShape2D_k0pft")
 position = Vector2(-101, 47)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_n35bq")
-animation = &"primary_attack"
-frame = 6
-frame_progress = 1.0
+animation = &"jump"
 
 [node name="AttackArea" type="Area2D" parent="." groups=["Sword"]]
 
 [node name="AttackAreaRight" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(-19.375, 60)
+position = Vector2(-17, 60)
 shape = SubResource("RectangleShape2D_vu2lh")
 disabled = true
 
