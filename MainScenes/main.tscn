@@ -24,8 +24,8 @@ tile_set = SubResource("TileSet_oxvmf")
 format = 2
 
 [node name="TestBg" type="Sprite2D" parent="."]
-position = Vector2(0, 69.2812)
-scale = Vector2(0.325326, 0.130816)
+position = Vector2(0, 72)
+scale = Vector2(0.325326, 0.128371)
 texture = ExtResource("3_03o7f")
 
 [node name="Player" parent="." instance=ExtResource("4_dhun4")]
