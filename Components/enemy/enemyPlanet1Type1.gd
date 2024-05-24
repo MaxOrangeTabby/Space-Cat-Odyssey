@@ -1,17 +1,10 @@
 extends CharacterBody2D
 
-@export var knockbackModifier = 2
-@export var receiveKnockback: bool = true
 @export var starting_move_direction : Vector2 = Vector2.LEFT
 
 @onready var enemy_animation : AnimatedSprite2D = $AnimatedSprite2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var knockedBack = false
-
-var hp = 500
-var def = 50
-var atk = 25
 var dead = false 
 
 var enemySpeed = 40
@@ -35,14 +28,3 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
-
-func recieve_knockback(damage_source_pos: Vector2, received_damage: int):
-	if receiveKnockback:
-		var knockback_dir = damage_source_pos.direction_to(self.global_position)
-		knockback_dir = (knockback_dir/ abs(knockback_dir)) / 2
-		
-		var knockback_str = received_damage * knockbackModifier
-		var knockback = knockback_dir * knockback_str
-
-		global_position.x +=  knockback.x
-		knockedBack = true
