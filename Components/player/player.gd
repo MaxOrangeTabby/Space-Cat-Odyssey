@@ -8,8 +8,8 @@ signal hit
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var direction : Vector2 = Vector2.ZERO
-var animation_lock : bool = false
-var attacking : bool = false
+var animation_lock : bool = false # For locking run animation during jump
+var attacking : bool = false # To avoid sliding during attacking
 
 
 
@@ -20,17 +20,17 @@ func _physics_process(delta):
 	
 	# Jump Logic
 	if Input.is_action_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
+		jump()
 
 	# Movement Logic (left/right)
 	direction = Input.get_vector("move_left","move_right","jump","move_down")
-	if direction.x != 0 && sprite_animation.animation != "jump" && not animation_lock:
+	if direction.x != 0  && !attacking:
 		velocity.x = direction.x * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, speed)	
 		
 	# Attack Logic
-	if Input.is_action_pressed("primary_attack"):
+	if Input.is_action_pressed("primary_attack") && (sprite_animation.animation != "jump"):
 			attack()
 
 	move_and_slide()
@@ -45,7 +45,7 @@ func _on_animated_sprite_2d_animation_finished():
 			$AttackArea/AttackAreaLeft.disabled = true
 		else:
 			$AttackArea/AttackAreaRight.disabled = true
-		animation_lock = false
+		attacking = false
  
 func attack():
 	if($AnimatedSprite2D.flip_h):
@@ -53,8 +53,8 @@ func attack():
 	else:
 		$AttackArea/AttackAreaRight.disabled = false
 	sprite_animation.play("primary_attack")
-	animation_lock = true
-	
+	attacking = true
+
 func jump():
 	velocity.y = jump_velocity
 	sprite_animation.play("jump")
@@ -65,8 +65,9 @@ func update_animation():
 		if direction.x != 0 && !attacking:
 			sprite_animation.play("run")
 			sprite_animation.flip_h = velocity.x < 0
-		else:
+		elif !attacking:
 			sprite_animation.play("idle")
+
 func _on_body_entered(body):
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
