@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bve50p6dn2ly0"]
+
+[ext_resource type="Script" path="res://Components/ExternalAssets/HeathUI/hp_change_label.gd" id="1_smjue"]
+
+[node name="HPChangeLabel" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100
+"
+script = ExtResource("1_smjue")
+float_speed = Vector2(0, -70)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

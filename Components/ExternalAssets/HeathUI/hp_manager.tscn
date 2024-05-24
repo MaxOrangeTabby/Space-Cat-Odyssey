@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgwufqyoyfqk1"]
+
+[ext_resource type="Script" path="res://Components/ExternalAssets/HeathUI/hp_manager.gd" id="1_we0js"]
+[ext_resource type="PackedScene" uid="uid://bve50p6dn2ly0" path="res://Components/ExternalAssets/HeathUI/hp_change_label.tscn" id="2_h3wnh"]
+
+[node name="HPManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_we0js")
+health_change_label = ExtResource("2_h3wnh")
+damage_color = Color(0.739789, 1.93726e-06, 9.62615e-07, 1)
+heal_color = Color(1.05888e-06, 0.69624, 1.15514e-06, 1)
