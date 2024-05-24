@@ -43,7 +43,7 @@ metadata/_edit_group_ = true
 
 [node name="EnemySpawnLoc" type="PathFollow2D" parent="EnemyPath"]
 position = Vector2(1547.54, 3325.19)
-rotation = -1.61673
+rotation = -1.61674
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 7.5
