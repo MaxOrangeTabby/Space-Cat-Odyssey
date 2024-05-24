@@ -8,10 +8,13 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var knockedBack = false
-var enemySpeed = 40
 
 var hp = 500
+var def = 50
+var atk = 25
 var dead = false 
+
+var enemySpeed = 40
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,16 +46,3 @@ func recieve_knockback(damage_source_pos: Vector2, received_damage: int):
 
 		global_position.x +=  knockback.x
 		knockedBack = true
-
-
-
-func _on_hitbox_area_area_entered(area):
-	recieve_knockback(area.global_position, 100)
-	if area.is_in_group("Sword"):
-		dead = true;
-		enemy_animation.play("death");
-
-
-func _on_animated_sprite_2d_animation_finished():
-	if enemy_animation.animation == "death":
-		queue_free();
