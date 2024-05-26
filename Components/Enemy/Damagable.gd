@@ -9,16 +9,10 @@ class_name Damagable
 		SignalBus.emit_signal("on_health_changed",get_parent(), (value - hp))
 		hp = value
 @export var def : float = 50
-@export var atk : float = 25
 
 @export var knockbackModifier = 2
 @export var receiveKnockback: bool = true
 var knockedBack = false
-
-func _ready():
-	pass 
-func _process(delta):
-	pass
 
 func recieve_knockback(damage_source_pos: Vector2, received_damage: int):
 	if receiveKnockback:
@@ -33,7 +27,6 @@ func recieve_knockback(damage_source_pos: Vector2, received_damage: int):
 
 
 func hit(damage : int):
-	
 	hp -= (damage - def)
 	
 	if(hp <= 0):
