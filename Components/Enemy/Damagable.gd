@@ -30,4 +30,5 @@ func hit(damage : int):
 	hp -= (damage - def)
 	
 	if(hp <= 0):
-		get_parent().queue_free()
+		get_parent().dead = true
+		
