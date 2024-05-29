@@ -68,13 +68,7 @@ func update_animation():
 		elif !attacking:
 			sprite_animation.play("idle")
 
-func _on_body_entered(body):
-	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
 	
-func start(pos):
-	position = pos
-	show()
-	$CollisionShape2D.disabled = false
+
 
 
