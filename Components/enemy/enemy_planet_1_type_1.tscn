@@ -111,10 +111,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8gva"]
-size = Vector2(88, 80)
+size = Vector2(82, 72)
 
 [node name="enemyPlanet1Type1" type="CharacterBody2D"]
-position = Vector2(16, 0)
 script = ExtResource("1_6iy2q")
 metadata/_edit_group_ = true
 
@@ -125,7 +124,7 @@ sprite_frames = SubResource("SpriteFrames_oia4g")
 animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 0)
+position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_u8gva")
 
 [node name="Damagable" type="Node" parent="."]
@@ -135,5 +134,3 @@ script = ExtResource("24_mbcxk")
 script = ExtResource("25_715ac")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="child_entered_tree" from="CollisionShape2D" to="Damaging" method="_on_collision_shape_2d_child_entered_tree"]
-[connection signal="child_exiting_tree" from="CollisionShape2D" to="Damaging" method="_on_collision_shape_2d_child_exiting_tree"]
