@@ -90,21 +90,21 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_sj8vb")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("5_5lytf")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": ExtResource("6_fhbmd")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": ExtResource("7_y4iug")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": ExtResource("8_4b8nv")
 }],
 "loop": false,
 "name": &"primary_attack",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -131,12 +131,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vu2lh"]
-size = Vector2(84.75, 208)
+size = Vector2(42.375, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gywxu"]
-size = Vector2(88.5, 208)
+size = Vector2(44.25, 208)
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(8, 0)
 slide_on_ceiling = false
 script = ExtResource("1_7o8le")
 metadata/_edit_group_ = true
@@ -148,21 +149,19 @@ shape = SubResource("CapsuleShape2D_k0pft")
 position = Vector2(-4.54747e-13, 2.27374e-13)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_n35bq")
-animation = &"jump"
-frame = 5
-frame_progress = 1.0
+animation = &"primary_attack"
 
 [node name="AttackArea" type="Area2D" parent="." groups=["Sword"]]
 script = ExtResource("27_o1jr0")
 
 [node name="AttackAreaRight" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(48, 0)
+position = Vector2(40, 0)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_vu2lh")
 disabled = true
 
 [node name="AttackAreaLeft" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(-48, 0)
+position = Vector2(-40, 0)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_gywxu")
 disabled = true
