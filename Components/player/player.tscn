@@ -136,7 +136,7 @@ size = Vector2(42.375, 208)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gywxu"]
 size = Vector2(44.25, 208)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(8, 0)
 slide_on_ceiling = false
 script = ExtResource("1_7o8le")
