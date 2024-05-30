@@ -33,7 +33,7 @@ func _physics_process(delta):
 func attack():
 	enemy_animation.play("attack")
 	attacking = true
-	
+	$AttackArea/CollisionShape2D.disabled = false
 
 func death():
 	enemy_animation.play("death")
@@ -44,4 +44,5 @@ func _on_animated_sprite_2d_animation_finished():
 		queue_free()
 	if enemy_animation.animation == "attack":
 		attacking = false
+		$AttackArea/CollisionShape2D.disabled = true
 
