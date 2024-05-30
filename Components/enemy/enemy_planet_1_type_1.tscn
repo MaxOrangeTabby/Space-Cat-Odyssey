@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cupmf80lhdkod"]
+[gd_scene load_steps=29 format=3 uid="uid://cupmf80lhdkod"]
 
 [ext_resource type="Script" path="res://Components/Enemy/enemyPlanet1Type1.gd" id="1_6iy2q"]
 [ext_resource type="Texture2D" uid="uid://bm1w1vgndkm2f" path="res://art/Dog1_AttackAnimation/Dog1_Attack1.PNG" id="2_cdx0d"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c80xrhfi7akrp" path="res://art/Dog1_WalkCycle/Dog1_Walk7.PNG" id="22_u5cv4"]
 [ext_resource type="Texture2D" uid="uid://bh1tospt4i0es" path="res://art/Dog1_WalkCycle/Dog1_Walk8.PNG" id="23_bbfx4"]
 [ext_resource type="Script" path="res://Components/Enemy/Damagable.gd" id="24_mbcxk"]
+[ext_resource type="Script" path="res://Components/Enemy/Attackable.gd" id="25_7mt4e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oia4g"]
 animations = [{
@@ -112,6 +113,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8gva"]
 size = Vector2(82, 72)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnw8u"]
+size = Vector2(32, 72)
+
 [node name="enemyPlanet1Type1" type="CharacterBody2D"]
 script = ExtResource("1_6iy2q")
 metadata/_edit_group_ = true
@@ -121,6 +125,8 @@ position = Vector2(7.62939e-06, 1.90735e-06)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_oia4g")
 animation = &"attack"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 0)
@@ -129,4 +135,13 @@ shape = SubResource("RectangleShape2D_u8gva")
 [node name="Damagable" type="Node" parent="."]
 script = ExtResource("24_mbcxk")
 
+[node name="AttackArea" type="Area2D" parent="."]
+script = ExtResource("25_7mt4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-32, 0)
+shape = SubResource("RectangleShape2D_qnw8u")
+disabled = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]
