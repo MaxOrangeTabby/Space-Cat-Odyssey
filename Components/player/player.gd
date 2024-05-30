@@ -1,8 +1,15 @@
 extends CharacterBody2D
+
+class_name Player
+
 signal hit
+signal healthChanged
 
 @export var speed : float = 300.0
 @export var jump_velocity : float = -450.0
+
+@export var maxHealth : float = 30.0
+@onready var currentHealth = maxHealth
 
 @onready var sprite_animation : AnimatedSprite2D = $AnimatedSprite2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -56,6 +63,7 @@ func attack():
 	attacking = true
 
 func jump():
+	healthChanged.emit()
 	velocity.y = jump_velocity
 	sprite_animation.play("jump")
 	animation_lock = true
