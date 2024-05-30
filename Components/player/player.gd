@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
-signal hit
-signal healthChanged
+signal hit(damage_taken : float)
+signal healthChanged(damage_taken : float)
 
 @export var speed : float = 300.0
 @export var jump_velocity : float = -450.0
@@ -18,7 +18,8 @@ var direction : Vector2 = Vector2.ZERO
 var animation_lock : bool = false # For locking run animation during jump
 var attacking : bool = false # To avoid sliding during attacking
 
-
+func _ready():
+	hit.connect(_get_hit)
 
 func _physics_process(delta):
 	# Gravity
@@ -63,11 +64,13 @@ func attack():
 	attacking = true
 
 func jump():
-	healthChanged.emit()
 	velocity.y = jump_velocity
 	sprite_animation.play("jump")
 	animation_lock = true
 
+func _get_hit(damage_taken):
+	healthChanged.emit(damage_taken)
+	
 func update_animation():
 	if not animation_lock:
 		if direction.x != 0 && !attacking:

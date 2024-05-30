@@ -4,9 +4,9 @@ extends ProgressBar
 
 func _ready():
 	player.healthChanged.connect(update)
-	update()
+
 	
-func update():
-	value = value / 2
+func update(damage_taken):
+	value = value - damage_taken
 	print("update")
 
