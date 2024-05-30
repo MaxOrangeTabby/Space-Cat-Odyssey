@@ -33,6 +33,7 @@ func _physics_process(delta):
 func attack():
 	enemy_animation.play("attack")
 	attacking = true
+	
 
 func death():
 	enemy_animation.play("death")
