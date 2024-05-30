@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cupmf80lhdkod"]
+[gd_scene load_steps=27 format=3 uid="uid://cupmf80lhdkod"]
 
 [ext_resource type="Script" path="res://Components/Enemy/enemyPlanet1Type1.gd" id="1_6iy2q"]
 [ext_resource type="Texture2D" uid="uid://bm1w1vgndkm2f" path="res://art/Dog1_AttackAnimation/Dog1_Attack1.PNG" id="2_cdx0d"]
@@ -24,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://c80xrhfi7akrp" path="res://art/Dog1_WalkCycle/Dog1_Walk7.PNG" id="22_u5cv4"]
 [ext_resource type="Texture2D" uid="uid://bh1tospt4i0es" path="res://art/Dog1_WalkCycle/Dog1_Walk8.PNG" id="23_bbfx4"]
 [ext_resource type="Script" path="res://Components/Enemy/Damagable.gd" id="24_mbcxk"]
-[ext_resource type="Script" path="res://Components/Enemy/Damaging.gd" id="25_715ac"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oia4g"]
 animations = [{
@@ -129,8 +128,5 @@ shape = SubResource("RectangleShape2D_u8gva")
 
 [node name="Damagable" type="Node" parent="."]
 script = ExtResource("24_mbcxk")
-
-[node name="Damaging" type="Node" parent="."]
-script = ExtResource("25_715ac")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
