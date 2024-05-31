@@ -13,10 +13,6 @@ func _process(delta):
 	pass
 
 
-func _on_player_hit():
-	pass # Replace with function body.
-
-
 func _on_enemy_timer_timeout():
 	var enemy = enemy_scene.instantiate()  
 
