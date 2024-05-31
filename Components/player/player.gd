@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-signal hit(damage_taken : float)
+signal gotHit(damage_taken : float)
 signal healthChanged(damage_taken : float)
 
 @export var speed : float = 300.0
@@ -19,7 +19,7 @@ var animation_lock : bool = false # For locking run animation during jump
 var attacking : bool = false # To avoid sliding during attacking
 
 func _ready():
-	hit.connect(_get_hit)
+	gotHit.connect(_get_hit)
 
 func _physics_process(delta):
 	# Gravity
