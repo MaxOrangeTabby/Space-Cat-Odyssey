@@ -15,7 +15,7 @@ class_name Damagable
 var knockedBack = false
 
 func recieve_knockback(damage_source_pos: Vector2, received_damage: int):
-	if receiveKnockback:
+	if receiveKnockback && !get_parent().dead:
 		var knockback_dir = damage_source_pos.direction_to(get_parent().global_position)
 		knockback_dir = (knockback_dir/ abs(knockback_dir)) / 2
 		

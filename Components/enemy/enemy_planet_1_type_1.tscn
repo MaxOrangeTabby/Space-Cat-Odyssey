@@ -1,13 +1,13 @@
 [gd_scene load_steps=29 format=3 uid="uid://cupmf80lhdkod"]
 
 [ext_resource type="Script" path="res://Components/Enemy/enemyPlanet1Type1.gd" id="1_6iy2q"]
-[ext_resource type="Texture2D" uid="uid://bm1w1vgndkm2f" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack1.PNG" id="2_cdx0d"]
-[ext_resource type="Texture2D" uid="uid://xfwtpi3vgmpo" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack2.PNG" id="3_ftnk3"]
-[ext_resource type="Texture2D" uid="uid://cwdd80swr17dg" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack3.PNG" id="4_ro3cw"]
-[ext_resource type="Texture2D" uid="uid://bg4oowrsben6u" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack4.PNG" id="5_vidbh"]
-[ext_resource type="Texture2D" uid="uid://byplxse74m3be" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack5.PNG" id="6_3c86y"]
-[ext_resource type="Texture2D" uid="uid://5r6egeeywdio" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack6.PNG" id="7_kq3av"]
-[ext_resource type="Texture2D" uid="uid://b5p5sf34sx80c" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack7.PNG" id="8_rdhwr"]
+[ext_resource type="Texture2D" uid="uid://bm1w1vgndkm2f" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack1.PNG" id="2_o1kq2"]
+[ext_resource type="Texture2D" uid="uid://xfwtpi3vgmpo" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack2.PNG" id="3_ea8um"]
+[ext_resource type="Texture2D" uid="uid://cwdd80swr17dg" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack3.PNG" id="4_xr048"]
+[ext_resource type="Texture2D" uid="uid://bg4oowrsben6u" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack4.PNG" id="5_e0yrn"]
+[ext_resource type="Texture2D" uid="uid://byplxse74m3be" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack5.PNG" id="6_hen4d"]
+[ext_resource type="Texture2D" uid="uid://5r6egeeywdio" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack6.PNG" id="7_v3ip4"]
+[ext_resource type="Texture2D" uid="uid://b5p5sf34sx80c" path="res://art/Planet1Dog1/Dog1_AttackAnimation/Dog1_Attack7.PNG" id="8_g33lj"]
 [ext_resource type="Texture2D" uid="uid://b4xnntm6kwx8d" path="res://art/Planet1Dog1/Dog1_DeathAnimation/Dog1_Death.PNG" id="9_b1m1i"]
 [ext_resource type="Texture2D" uid="uid://c8r43o7p3ldbk" path="res://art/Planet1Dog1/Dog1_DeathAnimation/Dog1_Death2.PNG" id="10_c0g28"]
 [ext_resource type="Texture2D" uid="uid://dsckua2jt56rt" path="res://art/Planet1Dog1/Dog1_DeathAnimation/Dog1_Death3.PNG" id="11_04fta"]
@@ -30,25 +30,25 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_cdx0d")
+"texture": ExtResource("2_o1kq2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ftnk3")
+"texture": ExtResource("3_ea8um")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_ro3cw")
+"texture": ExtResource("4_xr048")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_vidbh")
+"texture": ExtResource("5_e0yrn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_3c86y")
+"texture": ExtResource("6_hen4d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_kq3av")
+"texture": ExtResource("7_v3ip4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_rdhwr")
+"texture": ExtResource("8_g33lj")
 }],
 "loop": false,
 "name": &"attack",
