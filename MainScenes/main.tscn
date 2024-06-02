@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cupmf80lhdkod" path="res://Components/Enemy/enemy_planet_1_type_1.tscn" id="4_7v5rk"]
 [ext_resource type="PackedScene" uid="uid://djwlv1lon66y1" path="res://Components/Player/player.tscn" id="4_dhun4"]
 [ext_resource type="PackedScene" uid="uid://dgwufqyoyfqk1" path="res://Components/ExternalAssets/HeathUI/hp_manager.tscn" id="5_xqdun"]
-[ext_resource type="Script" path="res://Components/UI/healthBar.gd" id="6_6aex7"]
+[ext_resource type="Script" path="res://Components/UI/PlayerHealthBar.gd" id="6_6aex7"]
 
 [sub_resource type="TileSet" id="TileSet_oxvmf"]
 

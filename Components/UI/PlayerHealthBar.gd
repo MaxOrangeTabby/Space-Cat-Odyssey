@@ -8,5 +8,5 @@ func _ready():
 	
 func update(damage_taken):
 	value = value - damage_taken
-	print("update")
+	
 
