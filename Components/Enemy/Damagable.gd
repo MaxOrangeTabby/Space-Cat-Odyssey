@@ -18,16 +18,18 @@ func recieve_knockback(damage_source_pos: Vector2, received_damage: int):
 	if receiveKnockback && !get_parent().dead:
 		var knockback_dir = damage_source_pos.direction_to(get_parent().global_position)
 		knockback_dir = (knockback_dir/ abs(knockback_dir)) / 2
-		
 		var knockback_str = received_damage * knockbackModifier
 		var knockback = knockback_dir * knockback_str
-
-		get_parent().global_position.x +=  knockback.x
 		knockedBack = true
+		
+		get_parent().global_position.x +=  knockback.x
+
 
 
 func hit(damage : int):
 	hp -= (damage - def)
+	# Update Health Bar
+	(get_parent().damaged).emit(damage-def)
 	
 	if(hp <= 0):
 		get_parent().dead = true

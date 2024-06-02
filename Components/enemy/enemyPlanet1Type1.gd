@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal damaged(damage_taken : float)
+
 @export var starting_move_direction : Vector2 = Vector2.LEFT
 @export var atk : float = 25
 var atkRange : float = 65
